@@ -1,12 +1,6 @@
 # rgr-bootcamp-ex01_prueba_tecnica
 EX01 - Prueba Técnica
 
-## Diagrama ER y Modelo Relacional
-
-![diagramaER](https://user-images.githubusercontent.com/49531890/233107551-78f8f7fa-2eb1-404e-aca6-b05fba13bfbd.png)
-
-![modeloRelacional](https://user-images.githubusercontent.com/49531890/233107597-cee72350-deec-4f28-a346-eca1437db750.png)
-
 ## API endpoints
 
 Listado de les endpoints
