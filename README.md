@@ -42,7 +42,3 @@ Listado de les endpoints
 [/api/juegos/{id}](#delete-apijuegos-id) <br/>
 [/api/grupos/{id}](#delete-apigrupos-id) <br/>
 [/api/usuariogrupo/{id}](#delete-apiusuariogrupo-id) <br/>
-
-
-### GET /api/usuarios/
-texto prueba
