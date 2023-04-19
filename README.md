@@ -1,5 +1,5 @@
 # rgr-bootcamp-ex01_prueba_tecnica
-EX01 - Prueba Técnica
+EX01 - Prueba Técnica 19/04/2023
 
 ## API endpoints
 
