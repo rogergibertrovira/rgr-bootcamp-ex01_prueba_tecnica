@@ -10,4 +10,6 @@ public interface IMensajeService {
 	public Mensaje guardarMensaje(Mensaje mensaje); // Guarda un mensaje CREATE
 
 	public Mensaje mensajeXID(int id); // Leer datos de un mensaje READ
+	
+	public void eliminarMensaje(int id);// Elimina el mensaje DELETE
 }

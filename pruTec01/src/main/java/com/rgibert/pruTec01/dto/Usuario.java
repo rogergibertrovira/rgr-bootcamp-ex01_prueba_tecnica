@@ -4,7 +4,6 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -32,13 +31,17 @@ public class Usuario {
 	@Column(name = "email")
 	private String email;
 
-	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-	@JoinColumn(name = "id")
-	private List<Mensaje> mensajes;
+	@OneToMany
+	@JoinColumn(name = "mensajes_FK1")
+	private List<Mensaje> mensaje;
 
-	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-	@JoinColumn(name = "id")
-	private List<UsuarioGrupo> usuarioGrupos;
+	@OneToMany
+	@JoinColumn(name = "grupos_FK1")
+	private List<Grupo> grupo;
+	
+	@OneToMany
+	@JoinColumn(name = "usuario_grupo_FK1")
+	private List<UsuarioGrupo> usuarioGrupo;
 
 	// Constructores
 	public Usuario() {
@@ -76,13 +79,19 @@ public class Usuario {
 	@JsonIgnore
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "Mensaje")
 	public List<Mensaje> getMensajes() {
-		return mensajes;
+		return mensaje;
 	}
 
 	@JsonIgnore
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "Grupo")
+	public List<Grupo> getGrupos() {
+		return grupo;
+	}
+	
+	@JsonIgnore
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "UsuarioGrupo")
 	public List<UsuarioGrupo> getUsuarioGrupos() {
-		return usuarioGrupos;
+		return usuarioGrupo;
 	}
 
 	// Setters
@@ -106,17 +115,17 @@ public class Usuario {
 		this.email = email;
 	}
 
-	public void setMensajes(List<Mensaje> mensajes) {
-		this.mensajes = mensajes;
+	public void setMensajes(List<Mensaje> mensaje) {
+		this.mensaje = mensaje;
 	}
 
-	public void setUsuarioGrupos(List<UsuarioGrupo> usuarioGrupos) {
-		this.usuarioGrupos = usuarioGrupos;
+	public void setUsuarioGrupos(List<UsuarioGrupo> usuarioGrupo) {
+		this.usuarioGrupo = usuarioGrupo;
 	}
 
 	@Override
 	public String toString() {
 		return "Usuario [id=" + id + ", nombreApel=" + nombreApel + ", username=" + username + ", contrasena="
-				+ contrasena + ", mensajes=" + mensajes + ", usuarioGrupos=" + usuarioGrupos + "]";
+				+ contrasena + ", mensajes=" + mensaje + ", usuarioGrupos=" + usuarioGrupo + "]";
 	}
 }

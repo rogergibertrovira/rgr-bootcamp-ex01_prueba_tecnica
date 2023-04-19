@@ -1,9 +1,8 @@
-DROP TABLE IF EXISTS usuarios;
-DROP TABLE IF EXISTS juegos;
-DROP TABLE IF EXISTS grupos;
-DROP TABLE IF EXISTS mensajes;
 DROP TABLE IF EXISTS usuario_grupo;
-
+DROP TABLE IF EXISTS mensajes;
+DROP TABLE IF EXISTS grupos;
+DROP TABLE IF EXISTS juegos;
+DROP TABLE IF EXISTS usuarios;
 
 CREATE TABLE usuarios (
 	id int NOT NULL AUTO_INCREMENT,
@@ -30,8 +29,9 @@ CREATE TABLE grupos (
     creador_id int DEFAULT NULL,
     juego_id int DEFAULT NULL,
     PRIMARY KEY (id),
-	CONSTRAINT grupos_fk1 FOREIGN KEY (creador_id) REFERENCES usuarios (id),
-    CONSTRAINT grupos_fk2 FOREIGN KEY (juego_id) REFERENCES juegos (id)
+	CONSTRAINT grupos_FK1 FOREIGN KEY (creador_id) REFERENCES usuarios (id),
+    CONSTRAINT grupos_FK2 FOREIGN KEY (juego_id) REFERENCES juegos (id)
+    ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 CREATE TABLE mensajes (
@@ -41,18 +41,19 @@ CREATE TABLE mensajes (
     juego_id int DEFAULT NULL,
     grupo_id int DEFAULT NULL,
     PRIMARY KEY (id),
-	CONSTRAINT mensajes_fk1 FOREIGN KEY (usuario_id) REFERENCES usuarios (id),
-    CONSTRAINT mensajes_fk2 FOREIGN KEY (juego_id) REFERENCES juegos (id),
-    CONSTRAINT mensajes_fk3 FOREIGN KEY (grupo_id) REFERENCES grupos (id)
+	CONSTRAINT mensajes_FK1 FOREIGN KEY (usuario_id) REFERENCES usuarios (id),
+    CONSTRAINT mensajes_FK2 FOREIGN KEY (grupo_id) REFERENCES grupos (id)
+    ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 CREATE TABLE usuario_grupo (
 	id int NOT NULL AUTO_INCREMENT,
-    usuario_id int NOT NULL,
-	grupo_id int NOT NULL,
+    usuario_id int DEFAULT NULL,
+	grupo_id int DEFAULT NULL,
 	PRIMARY KEY (id),
-	CONSTRAINT usuario_grupo_fk1 FOREIGN KEY (usuario_id) REFERENCES usuarios (id),
-    CONSTRAINT usuario_grupo_fk2 FOREIGN KEY (grupo_id) REFERENCES grupos (id)
+	CONSTRAINT usuario_grupos_FK1 FOREIGN KEY (usuario_id) REFERENCES usuarios (id),
+    CONSTRAINT usuario_grupo_FK2 FOREIGN KEY (grupo_id) REFERENCES grupos (id)
+    ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 INSERT INTO usuarios (nombre_apel, username, contrasena, email) VALUES 

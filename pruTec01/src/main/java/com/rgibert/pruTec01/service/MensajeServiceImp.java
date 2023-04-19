@@ -28,4 +28,9 @@ public class MensajeServiceImp implements IMensajeService {
 	public Mensaje mensajeXID(int id) {
 		return iMensajeDAO.findById(id).get();
 	}
+	
+	@Override
+	public void eliminarMensaje(int id) {
+		iMensajeDAO.deleteById(id);
+	}
 }

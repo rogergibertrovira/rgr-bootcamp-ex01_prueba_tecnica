@@ -4,7 +4,6 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -31,6 +30,15 @@ public class Grupo {
 	@Column(name = "imagen_URL")
 	private String imagenURL;
 
+
+	@OneToMany
+	@JoinColumn(name = "mensajes_FK2")
+	private List<Mensaje> mensaje;
+	
+	@OneToMany
+	@JoinColumn(name = "usuario_grupo_FK2")
+	private List<UsuarioGrupo> usuarioGrupo;
+	
 	@ManyToOne
 	@JoinColumn(name = "creador_id")
 	private Usuario usuarioCreador;
@@ -38,10 +46,6 @@ public class Grupo {
 	@ManyToOne
 	@JoinColumn(name = "juego_id")
 	private Juego juego;
-
-	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-	@JoinColumn(name = "id")
-	private List<Mensaje> mensajes;
 
 	// Constructores
 	public Grupo() {
@@ -83,7 +87,13 @@ public class Grupo {
 	@JsonIgnore
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "Mensaje")
 	public List<Mensaje> getJuegos() {
-		return mensajes;
+		return mensaje;
+	}
+	
+	@JsonIgnore
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "Mensaje")
+	public List<UsuarioGrupo> getUsuarioGrupo() {
+		return usuarioGrupo;
 	}
 
 	// Setters
@@ -111,8 +121,12 @@ public class Grupo {
 		this.juego = juego;
 	}
 
-	public void setMensajes(List<Mensaje> mensajes) {
-		this.mensajes = mensajes;
+	public void setMensajes(List<Mensaje> mensaje) {
+		this.mensaje = mensaje;
+	}
+	
+	public void setUsuarioGrupo(List<UsuarioGrupo> usuarioGrupo) {
+		this.usuarioGrupo = usuarioGrupo;
 	}
 
 	@Override

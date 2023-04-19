@@ -4,7 +4,6 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -30,13 +29,9 @@ public class Juego {
 	@Column(name = "imagen_URL")
 	private String imagenURL;
 
-	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-	@JoinColumn(name = "id")
-	private List<Juego> juegos;
-
-	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-	@JoinColumn(name = "id")
-	private List<Mensaje> mensajes;
+	@OneToMany
+	@JoinColumn(name = "grupos_FK2")
+	private List<Grupo> grupo;
 
 	// Constructores
 	public Juego() {
@@ -68,14 +63,8 @@ public class Juego {
 
 	@JsonIgnore
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "Juego")
-	public List<Juego> getJuegos() {
-		return juegos;
-	}
-
-	@JsonIgnore
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "Mensaje")
-	public List<Mensaje> getMensajes() {
-		return mensajes;
+	public List<Grupo> getGrupos() {
+		return grupo;
 	}
 
 	// Setters
@@ -95,17 +84,13 @@ public class Juego {
 		this.imagenURL = imagenURL;
 	}
 
-	public void setJuegos(List<Juego> juegos) {
-		this.juegos = juegos;
-	}
-
-	public void setMensajes(List<Mensaje> mensajes) {
-		this.mensajes = mensajes;
+	public void setJuegos(List<Grupo> grupo) {
+		this.grupo = grupo;
 	}
 
 	@Override
 	public String toString() {
 		return "Juego [id=" + id + ", nombre=" + nombre + ", descripcion=" + descripcion + ", imagenURL=" + imagenURL
-				+ "]";
+				+ ", grupo=" + grupo + "]";
 	}
 }

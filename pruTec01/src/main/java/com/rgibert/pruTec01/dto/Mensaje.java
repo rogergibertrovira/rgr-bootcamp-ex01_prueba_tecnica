@@ -25,10 +25,6 @@ public class Mensaje {
 	private Usuario usuario;
 
 	@ManyToOne
-	@JoinColumn(name = "juego_id")
-	private Juego juego;
-
-	@ManyToOne
 	@JoinColumn(name = "grupo_id")
 	private Grupo grupo;
 
@@ -40,7 +36,6 @@ public class Mensaje {
 	public Mensaje(String contenido, Usuario usuario, Juego juego, Grupo grupo) {
 		this.contenido = contenido;
 		this.usuario = usuario;
-		this.juego = juego;
 		this.grupo = grupo;
 	}
 
@@ -55,10 +50,6 @@ public class Mensaje {
 
 	public Usuario getUsuario() {
 		return usuario;
-	}
-
-	public Juego getJuego() {
-		return juego;
 	}
 
 	public Grupo getGrupo() {
@@ -78,17 +69,12 @@ public class Mensaje {
 		this.usuario = usuario;
 	}
 
-	public void setJuego(Juego juego) {
-		this.juego = juego;
-	}
-
 	public void setGrupo(Grupo grupo) {
 		this.grupo = grupo;
 	}
 
 	@Override
 	public String toString() {
-		return "Mensaje [id=" + id + ", contenido=" + contenido + ", usuario=" + usuario + ", juego="
-				+ juego + ", grupo=" + grupo + "]";
+		return "Mensaje [id=" + id + ", contenido=" + contenido + ", usuario=" + usuario + ", grupo=" + grupo + "]";
 	}
 }
