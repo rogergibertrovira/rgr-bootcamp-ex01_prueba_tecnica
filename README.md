@@ -7,3 +7,12 @@ Listado de les endpoints
 
 ## GET
 [/api/usuarios/](#get-apiusuarios) <br/>
+[/api/usuarios/{id}](#get-apiusuarios) <br/>
+[/api/usuarios/username/{username}](#get-apiusuarios-username) <br/>
+
+
+## POST
+
+## PUT
+
+## DELETE
