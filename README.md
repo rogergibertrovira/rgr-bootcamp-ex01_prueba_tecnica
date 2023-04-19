@@ -1,11 +1,17 @@
 # rgr-bootcamp-ex01_prueba_tecnica
 EX01 - Prueba Técnica
 
-# API endpoints
+## Diagrama ER y Modelo Relacional
+
+![diagramaER](https://user-images.githubusercontent.com/49531890/233107551-78f8f7fa-2eb1-404e-aca6-b05fba13bfbd.png)
+
+![modeloRelacional](https://user-images.githubusercontent.com/49531890/233107597-cee72350-deec-4f28-a346-eca1437db750.png)
+
+## API endpoints
 
 Listado de les endpoints
 
-## GET
+### GET
 [/api/usuarios/](#get-apiusuarios) <br/>
 [/api/usuarios/{id}](#get-apiusuarios) <br/>
 [/api/usuarios/username/{username}](#get-apiusuarios-username) <br/>
@@ -20,18 +26,18 @@ Listado de les endpoints
 [/api/usuariogrupo/](#get-apiusuariogrupo) <br/>
 [/api/usuariogrupo/{id}](#get-apiusuariogrupo-id) <br/>
 
-## POST
+### POST
 [/api/usuarios/](#post-apiusuarios) <br/>
 [/api/juegos/](#post-apijuegos) <br/>
 [/api/grupos/](#post-apigrupos) <br/>
 [/api/mensajes/](#post-apimensajes) <br/>
 [/api/usuariogrupo/](#post-apiusuariogrupo) <br/>
 
-## PUT
+### PUT
 [/api/usuarios/{id}](#put-apiusuarios) <br/>
 [/api/juegos/{id}](#put-apijuegos-id) <br/>
 
-## DELETE
+### DELETE
 [/api/usuarios/{id}](#delete-apiusuarios) <br/>
 [/api/juegos/{id}](#delete-apijuegos-id) <br/>
 [/api/grupos/{id}](#delete-apigrupos-id) <br/>
