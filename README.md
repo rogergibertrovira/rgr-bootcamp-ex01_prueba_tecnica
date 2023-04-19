@@ -1,4 +1,4 @@
-# Ex01 - Prueba_Técnica
+# Ex01 - Prueba Técnica
 Prueba Técnica ex01 del bootcamp, realizada el 19/04/2023
 
 ## API endpoints
